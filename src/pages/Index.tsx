@@ -17,12 +17,18 @@ import {
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-house.jpg";
-import livingRoomImage from "@/assets/living-room.jpg";
-import kitchenImage from "@/assets/kitchen.jpg";
-import bedroomImage from "@/assets/bedroom.jpg";
-import bathroomImage from "@/assets/bathroom.jpg";
-import backyardImage from "@/assets/backyard.jpg";
-import 7 from "@/assets/20210116_165335(1).jpg";
+
+
+// Load all images from the "Dom Piekiełko" folder to expand the gallery
+const domPiekielkoImages = Object.values(
+  import.meta.glob("@/assets/Dom Piekiełko/*.{jpg,JPG,jpeg,png,webp}", {
+    eager: true,
+    as: "url",
+  })
+).map((src) => ({
+  src: src as string,
+  alt: "Dom Piekiełko",
+}));
 
 
 
@@ -30,11 +36,8 @@ const Index = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const propertyImages = [
-    { src: livingRoomImage, alt: "Spacious Living Room" },
-    { src: kitchenImage, alt: "Modern Kitchen" },
-    { src: bedroomImage, alt: "Master Bedroom" },
-    { src: bathroomImage, alt: "Luxury Bathroom" },
-    { src: backyardImage, alt: "Beautiful Backyard" },
+
+    ...domPiekielkoImages,
   ];
 
   const features = [
@@ -66,10 +69,10 @@ const Index = () => {
               </h1>
               <p className="text-xl md:text-2xl text-white/90 mb-2 flex items-center gap-2">
                 <MapPin className="w-5 h-5" />
-                Piekiełko 133, k. Limanowej
+                Piekiełko , k. Limanowej
               </p>
               <div className="text-2xl md:text-3xl font-bold text-accent mb-2">
-                Cena do uzgodnienia
+                590 000 zł
               </div>
               <p className="text-lg text-white/90">
                 Idealne dla dużej rodziny, dwóch pokoleń lub na agroturystykę
@@ -86,7 +89,7 @@ const Index = () => {
             <Card className="text-center">
               <CardContent className="pt-6">
                 <Bed className="w-8 h-8 mx-auto mb-2 text-primary" />
-                <div className="text-2xl font-bold text-foreground">7+</div>
+                <div className="text-2xl font-bold text-foreground">6+</div>
                 <div className="text-sm text-muted-foreground">Pokoi</div>
               </CardContent>
             </Card>
