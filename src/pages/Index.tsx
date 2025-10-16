@@ -22,6 +22,9 @@ import kitchenImage from "@/assets/kitchen.jpg";
 import bedroomImage from "@/assets/bedroom.jpg";
 import bathroomImage from "@/assets/bathroom.jpg";
 import backyardImage from "@/assets/backyard.jpg";
+import 7 from "@/assets/20210116_165335(1).jpg";
+
+
 
 const Index = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
