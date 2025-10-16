@@ -9,10 +9,11 @@ import {
   MapPin, 
   Phone, 
   Mail,
-  Car,
-  Trees,
-  Sofa,
-  Sparkles
+  Mountain,
+  Flame,
+  DoorOpen,
+  Layers,
+  TreePine
 } from "lucide-react";
 
 import heroImage from "@/assets/hero-house.jpg";
@@ -34,10 +35,10 @@ const Index = () => {
   ];
 
   const features = [
-    { icon: Sparkles, title: "Newly Renovated", description: "Completely updated with modern finishes" },
-    { icon: Sofa, title: "Open Floor Plan", description: "Spacious and bright living areas" },
-    { icon: Trees, title: "Landscaped Yard", description: "Professionally maintained outdoor space" },
-    { icon: Car, title: "2-Car Garage", description: "Attached garage with storage" },
+    { icon: Mountain, title: "Baza wypadowa w góry", description: "Mogielica 20 min, Turbacz 30 min" },
+    { icon: Layers, title: "Trzy kondygnacje", description: "Idealne dla dużej rodziny lub dwóch pokoleń" },
+    { icon: Flame, title: "Nowy piec gazowy", description: "Ekonomiczne ogrzewanie gazowe" },
+    { icon: TreePine, title: "Działka 15 arów", description: "Ogrodzona z drzewami owocowymi" },
   ];
 
   return (
@@ -55,18 +56,21 @@ const Index = () => {
           <div className="container mx-auto px-4 pb-12 md:pb-16">
             <div className="max-w-3xl text-white">
               <div className="inline-block px-4 py-2 bg-accent rounded-full mb-4">
-                <span className="text-primary font-semibold">For Sale</span>
+                <span className="text-primary font-semibold">Na Sprzedaż</span>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-4">
-                Stunning Modern Home
+                Dom z potencjałem w sercu Beskidu Wyspowego
               </h1>
               <p className="text-xl md:text-2xl text-white/90 mb-2 flex items-center gap-2">
                 <MapPin className="w-5 h-5" />
-                123 Maple Street, Beautiful Suburb, ST 12345
+                Piekiełko 133, k. Limanowej
               </p>
-              <div className="text-3xl md:text-5xl font-bold text-accent mb-6">
-                $850,000
+              <div className="text-2xl md:text-3xl font-bold text-accent mb-2">
+                Cena do uzgodnienia
               </div>
+              <p className="text-lg text-white/90">
+                Idealne dla dużej rodziny, dwóch pokoleń lub na agroturystykę
+              </p>
             </div>
           </div>
         </div>
@@ -79,8 +83,8 @@ const Index = () => {
             <Card className="text-center">
               <CardContent className="pt-6">
                 <Bed className="w-8 h-8 mx-auto mb-2 text-primary" />
-                <div className="text-2xl font-bold text-foreground">4</div>
-                <div className="text-sm text-muted-foreground">Bedrooms</div>
+                <div className="text-2xl font-bold text-foreground">7+</div>
+                <div className="text-sm text-muted-foreground">Pokoi</div>
               </CardContent>
             </Card>
             
@@ -88,23 +92,23 @@ const Index = () => {
               <CardContent className="pt-6">
                 <Bath className="w-8 h-8 mx-auto mb-2 text-primary" />
                 <div className="text-2xl font-bold text-foreground">3</div>
-                <div className="text-sm text-muted-foreground">Bathrooms</div>
+                <div className="text-sm text-muted-foreground">Łazienki</div>
               </CardContent>
             </Card>
             
             <Card className="text-center">
               <CardContent className="pt-6">
                 <Square className="w-8 h-8 mx-auto mb-2 text-primary" />
-                <div className="text-2xl font-bold text-foreground">2,850</div>
-                <div className="text-sm text-muted-foreground">Sq Ft</div>
+                <div className="text-2xl font-bold text-foreground">15</div>
+                <div className="text-sm text-muted-foreground">Arów działki</div>
               </CardContent>
             </Card>
             
             <Card className="text-center">
               <CardContent className="pt-6">
                 <Home className="w-8 h-8 mx-auto mb-2 text-primary" />
-                <div className="text-2xl font-bold text-foreground">2018</div>
-                <div className="text-sm text-muted-foreground">Built</div>
+                <div className="text-2xl font-bold text-foreground">Lata 90</div>
+                <div className="text-sm text-muted-foreground">Rok budowy</div>
               </CardContent>
             </Card>
           </div>
@@ -116,34 +120,123 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              About This Property
+              O nieruchomości
             </h2>
             <div className="prose prose-lg max-w-none text-muted-foreground">
               <p className="mb-4">
-                Welcome to this stunning modern home that perfectly blends luxury and comfort. 
-                This meticulously maintained property features an open floor plan, high-end finishes, 
-                and an abundance of natural light throughout.
+                Marzysz o domu w otoczeniu gór, z dala od miejskiego zgiełku, a jednocześnie z doskonałym dojazdem 
+                do Krakowa, Nowego Sącza i Limanowej? Ta nieruchomość to idealna propozycja dla dużej rodziny, 
+                dwóch pokoleń lub osoby szukającej miejsca z potencjałem na agroturystykę. Poczuj spokój i ciesz 
+                się pięknymi widokami każdego dnia!
               </p>
               <p className="mb-4">
-                The gourmet kitchen boasts custom cabinetry, premium appliances, and a large island 
-                perfect for entertaining. The spacious master suite includes a luxurious en-suite 
-                bathroom and generous walk-in closet.
+                <strong>Wyjątkowa lokalizacja – baza wypadowa w góry:</strong> Idealne miejsce dla miłośników 
+                aktywnego wypoczynku. W zasięgu krótkiej przejażdżki znajdują się najpiękniejsze pasma górskie 
+                Małopolski – Mogielica (20 min), Turbacz (30 min), Jaworzyna (40 min). Jednocześnie świetna 
+                komunikacja: Limanowa 5 min, Nowy Sącz 30 min, Kraków 60 min.
               </p>
               <p>
-                Step outside to your private backyard oasis, complete with a covered patio and 
-                beautifully landscaped grounds. This home is located in a desirable neighborhood 
-                with excellent schools and convenient access to shopping and dining.
+                <strong>Przestronny dom po remontach:</strong> Solidny dom z lat 90-tych z nowym piecem gazowym, 
+                nowymi oknami 3-szybowymi na parterze, nowym tarasem wybrukowanym i nowymi stalowymi drzwiami 
+                wejściowymi. Przemyślany układ pomieszczeń na trzech kondygnacjach plus strych (~50 m²) z 
+                możliwością adaptacji.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Image Gallery */}
+      {/* Layout Details */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
+              Układ pomieszczeń
+            </h2>
+            <div className="space-y-6">
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <DoorOpen className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">
+                        Przyziemie (Poziom 0)
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Wyremontowana kuchnia i pokój, garaż oraz kotłownia z łazienką (do własnej aranżacji). 
+                        Idealne na mieszkanie dla seniora, biuro lub wynajem.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Home className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">
+                        Piętro 1
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Dwa ustawne pokoje z balkonem, kuchnia i łazienka. Pomieszczenia odświeżone, 
+                        gotowe do zamieszkania.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Layers className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">
+                        Piętro 2
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Trzy pokoje oraz nowa, w pełni wyremontowana łazienka.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Mountain className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">
+                        Poddasze (Strych)
+                      </h3>
+                      <p className="text-muted-foreground">
+                        Ok. 50 m² dodatkowej przestrzeni do adaptacji z ocieplonym dachem i stropem.
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Image Gallery */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-center">
-            Photo Gallery
+            Galeria zdjęć
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
             {propertyImages.map((image, index) => (
@@ -165,10 +258,10 @@ const Index = () => {
       </section>
 
       {/* Features */}
-      <section className="py-16">
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
-            Key Features
+            Największe atuty
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {features.map((feature, index) => (
@@ -190,15 +283,54 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Technical Details */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8">
+              Dane techniczne
+            </h2>
+            <Card>
+              <CardContent className="pt-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-3">Materiały i wykończenie:</h3>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>• Pustak, ocieplony wełną mineralną</li>
+                      <li>• Dach: blacha, ocieplony</li>
+                      <li>• Nowy piec gazowy</li>
+                      <li>• Nowe okna 3-szybowe (parter)</li>
+                      <li>• Nowe drzwi stalowe (podwójne)</li>
+                      <li>• Nowy wybrukowany taras</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-3">Media i działka:</h3>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li>• Prąd (w tym siła)</li>
+                      <li>• Gaz</li>
+                      <li>• Wodociąg miejski</li>
+                      <li>• Szambo</li>
+                      <li>• Działka 15 arów</li>
+                      <li>• Dojazd asfaltowy + 50m utwardzony</li>
+                    </ul>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section className="py-16 bg-gradient-to-br from-primary to-primary/80">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center text-primary-foreground">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Interested in This Property?
+              Zainteresowany tą nieruchomością?
             </h2>
             <p className="text-lg mb-8 text-primary-foreground/90">
-              Contact us today to schedule a viewing or learn more about this exceptional home.
+              Skontaktuj się z nami, aby umówić się na oglądanie lub dowiedzieć się więcej.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
@@ -207,7 +339,7 @@ const Index = () => {
                 className="w-full sm:w-auto"
               >
                 <Phone className="w-5 h-5" />
-                Call (555) 123-4567
+                Zadzwoń
               </Button>
               <Button 
                 size="lg" 
@@ -215,7 +347,7 @@ const Index = () => {
                 className="w-full sm:w-auto"
               >
                 <Mail className="w-5 h-5" />
-                Send Email
+                Wyślij e-mail
               </Button>
             </div>
           </div>
@@ -225,7 +357,7 @@ const Index = () => {
       {/* Footer */}
       <footer className="py-8 bg-muted/30">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>© 2025 Property Listing. All rights reserved.</p>
+          <p>© 2025 Ogłoszenie nieruchomości. Wszelkie prawa zastrzeżone.</p>
         </div>
       </footer>
 
