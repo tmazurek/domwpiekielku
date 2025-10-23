@@ -345,7 +345,7 @@ const Index = () => {
                 className="w-full sm:w-auto"
               >
                 <Phone className="w-5 h-5" />
-                Zadzwoń
+                Zadzwoń: 603 608 067
               </Button>
               <Button 
                 size="lg" 
@@ -353,7 +353,7 @@ const Index = () => {
                 className="w-full sm:w-auto"
               >
                 <Mail className="w-5 h-5" />
-                Wyślij e-mail
+                Wyślij e-mail: tmazurek@outlook.com
               </Button>
             </div>
           </div>
