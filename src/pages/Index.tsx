@@ -19,26 +19,44 @@ import {
 import heroImage from "@/assets/hero-house.jpg";
 
 
-// Load all images from the "Dom Piekiełko" folder to expand the gallery
-const domPiekielkoImages = Object.values(
-  import.meta.glob("@/assets/Dom Piekiełko/*.{jpg,JPG,jpeg,png,webp}", {
+// Load all images from the "Dom Piekiełko" folder and subfolders, grouped by folder
+const domPiekielkoImagesByFolder = Object.entries(
+  import.meta.glob("@/assets/Dom Piekiełko/**/*.{jpg,JPG,jpeg,png,webp}", {
     eager: true,
     as: "url",
   })
-).map((src) => ({
-  src: src as string,
-  alt: "Dom Piekiełko",
-}));
+).reduce((acc, [path, src]) => {
+  // Extract folder name from path (e.g., "Dom Piekiełko/ogrod/image.jpg" -> "ogrod")
+  const pathParts = path.split("/");
+  const folderIndex = pathParts.findIndex(part => part === "Dom Piekiełko");
+  const folderName = folderIndex >= 0 && pathParts.length > folderIndex + 1 
+    ? pathParts[folderIndex + 1] 
+    : "inne";
+  
+  if (!acc[folderName]) {
+    acc[folderName] = [];
+  }
+  
+  acc[folderName].push({
+    src: src as string,
+    alt: "Dom Piekiełko",
+  });
+  
+  return acc;
+}, {} as Record<string, Array<{ src: string; alt: string }>>);
 
-
+// Map folder names to display names
+const folderDisplayNames: Record<string, string> = {
+  ogrod: "Ogród",
+  poziom0: "Przyziemie (Poziom 0)",
+  poziom1: "Piętro 1",
+  poziom2: "Piętro 2",
+  poziom3: "Piętro 3 (Poddasze)",
+  inne: "Inne",
+};
 
 const Index = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-
-  const propertyImages = [
-
-    ...domPiekielkoImages,
-  ];
 
   const features = [
     { icon: Mountain, title: "Baza wypadowa w góry", description: "Mogielica 20 min, Turbacz 30 min" },
@@ -241,24 +259,39 @@ const Index = () => {
       {/* Image Gallery */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
             Galeria zdjęć
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-            {propertyImages.map((image, index) => (
-              <div
-                key={index}
-                className="relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group"
-                onClick={() => setSelectedImage(image.src)}
-              >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-              </div>
-            ))}
+          <div className="space-y-12 max-w-6xl mx-auto">
+            {Object.entries(domPiekielkoImagesByFolder)
+              .sort(([a], [b]) => {
+                // Sort folders: ogrod, poziom0, poziom1, poziom2, poziom3, inne
+                const order = ['ogrod', 'poziom0', 'poziom1', 'poziom2', 'poziom3', 'inne'];
+                return (order.indexOf(a) === -1 ? 999 : order.indexOf(a)) - (order.indexOf(b) === -1 ? 999 : order.indexOf(b));
+              })
+              .map(([folderName, images]) => (
+                <div key={folderName} className="space-y-4">
+                  <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-6">
+                    {folderDisplayNames[folderName] || folderName}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {images.map((image, index) => (
+                      <div
+                        key={index}
+                        className="relative aspect-[4/3] overflow-hidden rounded-lg cursor-pointer group"
+                        onClick={() => setSelectedImage(image.src)}
+                      >
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </section>
