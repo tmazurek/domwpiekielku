@@ -90,7 +90,7 @@ const Index = () => {
                 Piekiełko , k. Limanowej
               </p>
               <div className="text-2xl md:text-3xl font-bold text-accent mb-2">
-                590 000 zł
+                650 000 zł
               </div>
               <p className="text-lg text-white/90">
                 Idealne dla dużej rodziny, dwóch pokoleń lub na agroturystykę
